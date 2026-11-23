@@ -9,8 +9,8 @@ Examples in other languages: [TypeScript](https://github.com/openvireo/openvireo
 ## Run them
 
 You need CMake 3.21+, a C++17 compiler and libcurl (macOS has it; on Debian or Ubuntu,
-`apt install libcurl4-openssl-dev`). CMake downloads the `libovcore` 1.0.0 package for your platform
-from the [core release](https://github.com/openvireo/openvireo-core/releases/tag/v1.0.0) and checks it
+`apt install libcurl4-openssl-dev`). CMake downloads the `libovcore` 1.1.0 package for your platform
+from the [core release](https://github.com/openvireo/openvireo-core/releases/tag/v1.1.0) and checks it
 against the release's checksums. To use a package you built, pass
 `-DOpenVireoCore_DIR=<pkg>/lib/cmake/OpenVireoCore`.
 

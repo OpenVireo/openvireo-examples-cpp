@@ -50,11 +50,9 @@ void list_shares(const ov::Account &account, const ov::CancelToken &cancel) {
 
 // Opening a link
 void open_link(const ov::Client &client, const std::string &api, const std::string &link, const ov::CancelToken &cancel) {
-    // The share id is the last path segment, before the '#key'. (ov::parse_share_link does this from the
-    // next core release on; 1.0.0's C++ package doesn't have it yet.)
-    auto path = link.substr(0, link.find('#'));
-    auto share_id = path.substr(path.find_last_of('/') + 1);
-    auto info = ov::call([&] { return client.share_info(api, share_id, cancel); });   // doesn't count as an open
+    auto parts = ov::call([&] { return ov::parse_share_link(link); });
+    ov::wipe(parts.key);
+    auto info = ov::call([&] { return client.share_info(api, parts.id, cancel); });   // doesn't count as an open
     // Show a "Reveal" button and open only when it's pressed: link previews then can't use up a one-time link.
     prompt("Press Enter to reveal... ");
     ov::OpenShareInput input{to_bytes(link), false, {}, true, info};
