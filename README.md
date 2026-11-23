@@ -43,6 +43,11 @@ clock and logging. [`src/host.cpp`](src/host.cpp) is a small one: libcurl with n
 cookies, and memory for the store and the cache. A desktop app keeps the store in the OS keychain and
 the cache on disk so it can open vaults offline.
 
+### Another core release
+
+`scripts/update-core.sh <version>` points `cmake/OpenVireoCore.cmake` at another release, with the
+checksums from its `SHA256SUMS`.
+
 ## The examples
 
 | Example | What it does | Guide |
