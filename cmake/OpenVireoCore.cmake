@@ -1,0 +1,48 @@
+# Downloads the libovcore CMake package for this platform from the core's GitHub release (checked
+# against the release's SHA256SUMS) and points find_package at it. Skipped when OpenVireoCore_DIR is set.
+set(OPENVIREO_CORE_VERSION 1.0.0)
+set(_ovcore_sha256_darwin-arm64 d5624e36e131c32aa16de6d6c2efb81082d72c23d93b99a92eee4ae6538d9d48)
+set(_ovcore_sha256_darwin-x64 4da50ed8867ed08e116312a6f312888dc78288edfaa939962e07b99ba408fa4d)
+set(_ovcore_sha256_linux-arm64 b952281154ec93b162e3ae7fd1cc809e5996c8348e27f0d23da9bf1e1faf6348)
+set(_ovcore_sha256_linux-x64 7d2021d0c418d44751fbb62a4b598f60555e63af4ef5b357a790ce58256fd266)
+set(_ovcore_sha256_windows-x64 64272076f286080d83183e4518efaf2c19c1b4cca014c8f6aee513c3a592c7fe)
+
+if(NOT OpenVireoCore_DIR)
+    string(TOLOWER "${CMAKE_SYSTEM_PROCESSOR}" _arch)
+    if(_arch MATCHES "^(arm64|aarch64)$")
+        set(_arch arm64)
+    else()
+        set(_arch x64)
+    endif()
+    if(APPLE)
+        set(_os darwin)
+        # one architecture per build: the release has a package for each
+        if(CMAKE_OSX_ARCHITECTURES MATCHES "x86_64")
+            set(_arch x64)
+        elseif(CMAKE_OSX_ARCHITECTURES MATCHES "arm64")
+            set(_arch arm64)
+        endif()
+    elseif(WIN32)
+        set(_os windows)
+    else()
+        set(_os linux)
+    endif()
+    set(_platform ${_os}-${_arch})
+    if(NOT DEFINED _ovcore_sha256_${_platform})
+        message(FATAL_ERROR "No libovcore ${OPENVIREO_CORE_VERSION} package for ${_platform}: set OpenVireoCore_DIR")
+    endif()
+    set(_name libovcore-${OPENVIREO_CORE_VERSION}-${_platform})
+    if(WIN32)
+        set(_file ${_name}.zip)
+    else()
+        set(_file ${_name}.tar.gz)
+    endif()
+
+    include(FetchContent)
+    FetchContent_Declare(openvireo_core
+        URL https://github.com/openvireo/openvireo-core/releases/download/v${OPENVIREO_CORE_VERSION}/${_file}
+        URL_HASH SHA256=${_ovcore_sha256_${_platform}}
+        DOWNLOAD_EXTRACT_TIMESTAMP TRUE)
+    FetchContent_MakeAvailable(openvireo_core)
+    set(OpenVireoCore_DIR ${openvireo_core_SOURCE_DIR}/lib/cmake/OpenVireoCore)
+endif()
