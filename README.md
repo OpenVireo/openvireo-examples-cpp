@@ -4,7 +4,7 @@ Runnable examples for the [OpenVireo](https://openvireo.com) C++ binding (`libov
 file per guide on [developer.openvireo.com](https://developer.openvireo.com). Each file holds the code from
 its guide's **C++** tab, wrapped in a program you can run.
 
-Examples in other languages: [TypeScript](https://github.com/openvireo/openvireo-examples-typescript) · [Python](https://github.com/openvireo/openvireo-examples-python) · [Kotlin](https://github.com/openvireo/openvireo-examples-kotlin) · [Java](https://github.com/openvireo/openvireo-examples-java) · [Swift](https://github.com/openvireo/openvireo-examples-swift) · [ov CLI](https://github.com/openvireo/openvireo-examples-cli)
+Examples in other languages: [TypeScript](https://github.com/openvireo/openvireo-examples-typescript) · [Rust](https://github.com/openvireo/openvireo-examples-rust) · [Python](https://github.com/openvireo/openvireo-examples-python) · [Kotlin](https://github.com/openvireo/openvireo-examples-kotlin) · [Java](https://github.com/openvireo/openvireo-examples-java) · [Swift](https://github.com/openvireo/openvireo-examples-swift) · [ov CLI](https://github.com/openvireo/openvireo-examples-cli)
 
 ## Run them
 
