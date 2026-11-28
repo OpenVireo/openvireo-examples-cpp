@@ -1,11 +1,11 @@
 # Downloads the libovcore CMake package for this platform from the core's GitHub release (checked
 # against the release's SHA256SUMS) and points find_package at it. Skipped when OpenVireoCore_DIR is set.
-set(OPENVIREO_CORE_VERSION 1.1.0)
-set(_ovcore_sha256_darwin-arm64 f82ac6a454e2cc08af6a983a9701a7aa6e4144c9cd153793823363cb34c703ab)
-set(_ovcore_sha256_darwin-x64 de5d49ed69178815accd9e5dcd9b86d9a8392c49186956d095896d322b510849)
-set(_ovcore_sha256_linux-arm64 4c8eb5fbffeb8c86eb72d2dffdef810a1ad010a0a2a7a781797c723122afe375)
-set(_ovcore_sha256_linux-x64 9832719c8aff631a7b1b7953a41ecad57d48c93ce8bad11fc46c872fd3975d63)
-set(_ovcore_sha256_windows-x64 a0a0d62af1a939eb10408c50a13d24bbfafc36bd05ed188656d2fb40332ebf63)
+set(OPENVIREO_CORE_VERSION 1.2.2)
+set(_ovcore_sha256_darwin-arm64 6e60dddcb53713f9ee46366bc75fb2784e5734451862d8a4c58ad05eff850da0)
+set(_ovcore_sha256_darwin-x64 86a1f10fa44278d3a3b948f27447f4d5210d1ddf5d97eb09d2179f8596c0e534)
+set(_ovcore_sha256_linux-arm64 b6f5b2c6979ded8c30b7ece1e3731cba13509780a05d36b58d96b77a5df8cb56)
+set(_ovcore_sha256_linux-x64 425ab21977eb613ef74094085ed149987a7a25da11f694a8f5f16c8af8ab283d)
+set(_ovcore_sha256_windows-x64 e20bbf2f4369495ac5c82af258f7a6d0db5d30add7b2c2f7fbbc21635961933d)
 
 if(NOT OpenVireoCore_DIR)
     string(TOLOWER "${CMAKE_SYSTEM_PROCESSOR}" _arch)
